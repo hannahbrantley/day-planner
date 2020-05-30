@@ -1,0 +1,16 @@
+<%- include('./partials/header') %>
+<h1>You are on the today page now!</h1>
+<ul class="right">
+	<li>
+	<% if (user) { %>
+    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+    <h2>you are logged in</h2>
+    <p>Welcome <%= user.name %></p>
+    <title><%= title %></title>
+	<% } else { %>
+    <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+    <h2>you are not logged in</h2>
+	<% } %>
+	</li>
+</ul>
+<%- include('./partials/footer') %>
