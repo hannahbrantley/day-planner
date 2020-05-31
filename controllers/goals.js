@@ -3,7 +3,8 @@ const Goal = require('../models/goal');
 module.exports = {
   index, 
   new: newGoal, 
-  create
+  create, 
+  show
 }
 
 function index(req, res) {
@@ -30,7 +31,17 @@ function create(req, res) {
       console.log(err) 
       return res.redirect('/');
     }
-    console.log(goal);
     return res.redirect('/goals');
+  })
+}
+
+function show(req, res) {
+  console.log('hello');
+  Goal.findById(req.params.id, function(err, goal) {
+    res.render('goals/show', { 
+      goal,
+      title: 'Goals', 
+      user: req.user
+    });
   })
 }
