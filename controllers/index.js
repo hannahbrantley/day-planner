@@ -13,7 +13,7 @@ function index(req, res) {
     if (err) return next(err);
     // Passing search values, name & sortKey, for use in the EJS
     res.render('today', {
-      title: "Yello",
+      title: "Today",
       users,
       name: req.query.name,
       sortKey,
