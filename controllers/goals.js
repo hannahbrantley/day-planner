@@ -6,7 +6,8 @@ module.exports = {
   create, 
   show, 
   edit, 
-  update
+  update, 
+  delete: deleteGoal
 }
 
 function index(req, res) {
@@ -70,4 +71,10 @@ function update(req, res) {
   function(err, goal) {
     res.redirect(`/goals/${goal._id}`);
   });
+}
+
+function deleteGoal(req, res) {
+  Goal.findByIdAndRemove(req.params.id, function(err, confirmation) {
+      res.redirect('/goals');
+  })
 }

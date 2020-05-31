@@ -7,5 +7,6 @@ router.post('/', goalsCtrl.create);
 router.get('/:id', goalsCtrl.show);
 router.get('/:id/edit', goalsCtrl.edit);
 router.put('/:id', goalsCtrl.update);
+router.delete('/:id', goalsCtrl.delete);
 
 module.exports = router;
