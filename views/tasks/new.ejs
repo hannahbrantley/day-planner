@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<form id="new-form" action="/tasks" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <label>Details:</label>
+  <input type="text" name="details">
+  <label>Due Date:</label>
+  <input type="date" name="dueDate">
+
+  <select name="goalId">
+    <%- goals.map(g =>
+    `<option value="${g._id}">${g.name}</option>`
+    ).join('') %>
+  </select>
+
+  <input type="submit" value="Create Task">
+</form>
+
+<%- include('../partials/footer') %>

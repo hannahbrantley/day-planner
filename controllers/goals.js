@@ -11,7 +11,8 @@ module.exports = {
 }
 
 function index(req, res) {
-  Goal.find({}, function(err, goals){
+  //console.log(req.user);
+  Goal.find({}, function(err, goals) {
     res.render('goals', { 
       title: 'Goals', 
       user: req.user, 
@@ -34,7 +35,7 @@ function create(req, res) {
   goal.save(function(err) {
     if (err) {
       console.log(err) 
-      return res.redirect('/');
+      return res.redirect('/goals');
     }
     console.log(goal);
     return res.redirect('/goals');

@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<h2>Tasks Yaaa</h2>
+
+<a href="/tasks/new">New Task</a>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Details</th>
+      <th>Due Date</th>
+      <th>Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tasks.forEach(function(t) { %>
+      <tr>
+        <td><%= t.name %></td>
+        <td><%= t.details %></td>
+        <td><%= t.dueDate %></td>
+        <td><%= t.done %></td>
+        <td><a href="/goals/<%= t._id %>">SEE MORE</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+<%- include('../partials/footer') %>
