@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Goal = require('../models/goal');
+const Task = require('../models/task');
 
 module.exports = {
     index
@@ -14,13 +15,16 @@ function index(req, res) {
     if (err) return next(err);
     // Passing search values, name & sortKey, for use in the EJS
     Goal.find({user: req.user}, function(err, goals) {
-    res.render('today', {
-      title: "Today",
-      users,
-      name: req.query.name,
-      sortKey,
-      user: req.user, 
-      goals
+    Task.find({user: req.user}, function (err, tasks) {
+      res.render('today', {
+        title: "Today",
+        users,
+        name: req.query.name,
+        sortKey,
+        user: req.user, 
+        goals, 
+        tasks
+      })
      });
     });
   });

@@ -15,10 +15,24 @@
 
 <div class="container-lg">
   <h6>Today's Action Items</h6>
+  <% if (tasks) { %>
+    <h6>ya we got tasks</h6>
+    <% tasks.forEach(function(t) { %>
+      <%= t.name %>
+    <% }); %>
+  <% } else { %>
+    <h6>No Tasks Yet</h6>
+  <% } %>
 </div>
 
 <div class="container-lg">
   <h6>Journal</h6>
+
+  <form id="new-form" action="/journals" method="POST">
+    <input type="text" name="content">
+    <input type="submit" value="Submit Journal">
+  </form>
+
 </div>
 
 <div class="container-lg">

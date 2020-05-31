@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<h1>Journals!!</h1>
+
+<% journals.forEach(function(j) { %>
+    <div><%= j.date %></div>
+    <div><%= j.content %></div>
+  <% }); %>
+ 
+ <%- include('../partials/footer') %>
