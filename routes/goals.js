@@ -1,12 +1,17 @@
 var router = require('express').Router();
 var goalsCtrl = require('../controllers/goals');
 
-router.get('/', goalsCtrl.index);
-router.get('/new', goalsCtrl.new);
-router.post('/', goalsCtrl.create);
-router.get('/:id', goalsCtrl.show);
-router.get('/:id/edit', goalsCtrl.edit);
-router.put('/:id', goalsCtrl.update);
-router.delete('/:id', goalsCtrl.delete);
+router.get('/', isLoggedIn, goalsCtrl.index);
+router.get('/new', isLoggedIn, goalsCtrl.new);
+router.post('/', isLoggedIn, goalsCtrl.create);
+router.get('/:id', isLoggedIn, goalsCtrl.show);
+router.get('/:id/edit', isLoggedIn, goalsCtrl.edit);
+router.put('/:id', isLoggedIn, goalsCtrl.update);
+router.delete('/:id', isLoggedIn, goalsCtrl.delete);
+
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated()) return next();
+  res.redirect('/auth/google');
+}
 
 module.exports = router;

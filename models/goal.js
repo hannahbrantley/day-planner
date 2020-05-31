@@ -6,11 +6,11 @@ const goalSchema = new Schema({
   details: String,
   startDate: { type: Date, required: true },
   dueDate: { type: Date, required: true }, 
-  active: Boolean,
-  // tasks: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Task'
-  // }]
+  active: { type: Boolean, default: true },  
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 module.exports = mongoose.model('Goal', goalSchema);

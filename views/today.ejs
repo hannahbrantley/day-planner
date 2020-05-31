@@ -3,6 +3,14 @@
 
 <div class="container-lg">
   <h6>Current Goal:</h6>
+  <% if (goals) { %>
+    <h6>ya we got goals</h6>
+    <% goals.forEach(function(g) { %>
+      <%= g.name %>
+    <% }); %>
+  <% } else { %>
+    <h6>No Goals Yet</h6>
+  <% } %>
 </div>
 
 <div class="container-lg">

@@ -28,12 +28,15 @@ function newGoal(req, res) {
 }
 
 function create(req, res) {
+  console.log(req.user);
   const goal = new Goal(req.body);
+  goal.user = req.user;
   goal.save(function(err) {
     if (err) {
       console.log(err) 
       return res.redirect('/');
     }
+    console.log(goal);
     return res.redirect('/goals');
   })
 }
