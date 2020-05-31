@@ -1,6 +1,9 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
 
+<% let today = new Date(new Date().setHours(0,0,0,0)) %>
+<h2><%= today %></h2>
+
 <div class="container-lg">
   <h6>Current Goal:</h6>
   <% if (goals) { %>
@@ -20,8 +23,12 @@
   <% if (tasks) { %>
     <h6>ya we got tasks</h6>
     <% tasks.forEach(function(t) { %>
-      <%= t.name %>
-    <% }); %>
+      <% if (t.dueDate.setHours(0,0,0,0) <= today) { %>
+        <%= t.name %>
+        <%= t.dueDate.toDateString() %>
+      <% } %>
+      <br>
+     <% }) %>
   <% } else { %>
     <h6>No Tasks Yet</h6>
   <% } %>
