@@ -11,6 +11,7 @@
       <th>Details</th>
       <th>Due Date</th>
       <th>Done</th>
+      <th>Goal</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +21,8 @@
         <td><%= t.details %></td>
         <td><%= t.dueDate %></td>
         <td><%= t.done %></td>
-        <td><a href="/goals/<%= t._id %>">SEE MORE</a></td>
+        <td><%= t.goal %></td>
+        <td><a href="/tasks/<%= t._id %>/edit">Edit</a></td>
       </tr>
       <% }); %>
     </tbody>

@@ -10,11 +10,11 @@ const goalSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }, 
-  tasks: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Task'
-  }]
+  }
+  // tasks: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Task'
+  // }]
 });
 
 module.exports = mongoose.model('Goal', goalSchema);

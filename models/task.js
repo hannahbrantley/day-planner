@@ -9,6 +9,10 @@ const taskSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  goal: {
+    type: Schema.Types.ObjectId,
+    ref: 'Goal'
   }
 });
 

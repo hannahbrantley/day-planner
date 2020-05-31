@@ -4,7 +4,9 @@ const Goal = require('../models/goal');
 module.exports = {
   index, 
   new: newTask, 
-  create
+  create,
+  edit,
+  update
 }
 
 function index(req, res) {
@@ -28,18 +30,41 @@ function newTask(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body);
+Goal.findById(req.body.goalId, function (err, goal) {
   const task = new Task(req.body);
   task.user = req.user;
+  task.goal = goal;
   task.save(function(err) {
     if (err) {
       console.log(err) 
       return res.redirect('/tasks/new');
     }
-    Goal.findById(req.body.goalId, function(err, goal) {
-      goal.tasks.push(task);
-      console.log(goal.tasks);
-    })
-    return res.redirect('/tasks');
-  })
+      return res.redirect('/tasks'); 
+   });
+  });
 };
+
+function edit(req, res) {
+  Task.findById(req.params.id, function(err, task) {
+    const dueValue = task.dueDate.toISOString().slice(0, 16);
+    Goal.find({}, function(err, goals) {
+      res.render('tasks/edit', {
+          task,
+          title: 'Tasks', 
+          dueValue, 
+          goals
+      })
+     })
+  })
+}
+
+function update(req, res) {
+  Task.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    overwrite: false
+  }, 
+  function(err, task) {
+    console.log(task);
+    res.redirect('/tasks');
+  });
+}
