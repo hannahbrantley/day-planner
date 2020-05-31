@@ -6,7 +6,8 @@ module.exports = {
   new: newTask, 
   create,
   edit,
-  update
+  update, 
+  delete: deleteTask
 }
 
 function index(req, res) {
@@ -39,6 +40,8 @@ Goal.findById(req.body.goalId, function (err, goal) {
       console.log(err) 
       return res.redirect('/tasks/new');
     }
+      console.log(task);
+      console.log('goal name: ', task.goal.name);
       return res.redirect('/tasks'); 
    });
   });
@@ -59,12 +62,17 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  Task.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    overwrite: false
-  }, 
-  function(err, task) {
-    console.log(task);
-    res.redirect('/tasks');
+  Goal.findById(req.body.goalId, function (err, goal) {
+    req.body.goal = goal;
+    Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, task) {
+      console.log('task after goal find by id: ', task);
+      res.redirect('/tasks');
+    })
   });
+}
+
+function deleteTask (req, res) {
+  Task.findByIdAndRemove(req.params.id, function(err, confirmation) {
+    res.redirect('/tasks');
+  })
 }
