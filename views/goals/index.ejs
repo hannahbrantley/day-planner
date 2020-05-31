@@ -2,4 +2,29 @@
 <%- include('../partials/nav') %>
 <h2>Goals Page Wooo</h2>
 
+<a href="/goals/new">New Goal</a>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Goal Name</th>
+      <th>Details</th>
+      <th>Start Date</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% goals.forEach(function(g) { %>
+      <tr>
+        <td><%= g.name %></td>
+        <td><%= g.details %></td>
+        <td><%= g.startDate %></td>
+        <td><%= g.dueDate %></td>
+        <td><a href="/goals/<%= g._id %>">SEE MORE</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+
 <%- include('../partials/footer') %>
