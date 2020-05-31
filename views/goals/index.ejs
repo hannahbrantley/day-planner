@@ -21,6 +21,11 @@
         <td><%= g.startDate %></td>
         <td><%= g.dueDate %></td>
         <td><a href="/goals/<%= g._id %>">SEE MORE</a></td>
+        <td>
+          <form action="/goals/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
+          <button type="submit">Delete <%= g.name %></button>
+          </form>
+        </td>
       </tr>
       <% }); %>
     </tbody>

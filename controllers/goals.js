@@ -1,4 +1,5 @@
 const Goal = require('../models/goal');
+const Task = require('../models/task');
 
 module.exports = {
   index, 
@@ -43,12 +44,16 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  console.log('hello');
-  Goal.findById(req.params.id, function(err, goal) {
-    res.render('goals/show', { 
-      goal,
-      title: 'Goals', 
-      user: req.user
+  Goal.findById(req.params.id, function(err, thisGoal) {
+    console.log('this goal: ', thisGoal);
+    Task.find({goal: thisGoal}, function(err, tasks) {
+      console.log(tasks);
+      res.render('goals/show', { 
+        thisGoal,
+        title: 'Goals', 
+        user: req.user,
+        tasks
+      })
     });
   })
 }

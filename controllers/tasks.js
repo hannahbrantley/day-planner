@@ -65,7 +65,6 @@ function update(req, res) {
   Goal.findById(req.body.goalId, function (err, goal) {
     req.body.goal = goal;
     Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, task) {
-      console.log('task after goal find by id: ', task);
       res.redirect('/tasks');
     })
   });

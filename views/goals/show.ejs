@@ -12,13 +12,18 @@
   </thead>
   <tbody>
       <tr>
-        <td><%= goal.name %></td>
-        <td><%= goal.details %></td>
-        <td><%= goal.startDate %></td>
-        <td><%= goal.dueDate %></td>
+        <td><%= thisGoal.name %></td>
+        <td><%= thisGoal.details %></td>
+        <td><%= thisGoal.startDate %></td>
+        <td><%= thisGoal.dueDate %></td>
       </tr>
     </tbody>
   </table>
-  <a href="/goals/<%= goal.id %>/edit">Edit Goal</a>
+  <h2>Tasks</h2>
+  <% tasks.forEach(function(task) { %>
+    <div><%= task.name %></div>
+  <% }) %>
+
+  <a href="/goals/<%= thisGoal.id %>/edit">Edit Goal</a>
 
   <%- include('../partials/footer') %>
