@@ -6,10 +6,12 @@
   <% if (goals) { %>
     <h6>ya we got goals</h6>
     <% goals.forEach(function(g) { %>
+      <% if (g.active === true) { %>
       <%= g.name %>
+     <% } %>
     <% }); %>
   <% } else { %>
-    <h6>No Goals Yet</h6>
+    <h6>No Active Yet</h6>
   <% } %>
 </div>
 
