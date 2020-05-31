@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<h2>Edit Goal!</h2>
+
+<form action="/goals/<%= goal._id %>?_method=PUT" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name" value="<%= goal.name %>">
+  <label>Details:</label>
+  <input type="text" name="details" value="<%= goal.details %>">
+  <label>Start Date:</label>
+  <input type="datetime-local" name="startDate" value="<%= startValue %>">
+  <label>End Date:</label>
+  <input type="datetime-local" name="dueDate" value="<%= dueValue %>">
+  <input type="submit" value="Update Goal">
+</form>
+
+<%- include('../partials/footer') %>

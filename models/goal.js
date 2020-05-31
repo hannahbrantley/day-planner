@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const goalSchema = new Schema({
   name: String,
   details: String,
-  startDate: Date,
-  dueDate: Date, 
+  startDate: { type: Date, required: true },
+  dueDate: { type: Date, required: true }, 
   active: Boolean,
   // tasks: [{
   //   type: Schema.Types.ObjectId,

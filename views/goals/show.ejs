@@ -1,3 +1,6 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
 <table id="list">
   <thead>
     <tr>
@@ -16,3 +19,6 @@
       </tr>
     </tbody>
   </table>
+  <a href="/goals/<%= goal.id %>/edit">Edit Goal</a>
+
+  <%- include('../partials/footer') %>

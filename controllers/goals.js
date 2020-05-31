@@ -4,7 +4,9 @@ module.exports = {
   index, 
   new: newGoal, 
   create, 
-  show
+  show, 
+  edit, 
+  update
 }
 
 function index(req, res) {
@@ -20,7 +22,7 @@ function index(req, res) {
 function newGoal(req, res) {
   res.render('goals/new', { 
     title: 'Goals', 
-    user: req.user
+    user: req.user,
   });
 }
 
@@ -44,4 +46,28 @@ function show(req, res) {
       user: req.user
     });
   })
+}
+
+function edit(req, res) {
+  Goal.findById(req.params.id, function(err, goal) {
+    const startValue = goal.startDate.toISOString().slice(0, 16);
+    const dueValue = goal.dueDate.toISOString().slice(0, 16);
+      res.render('goals/edit', {
+          goal,
+          title: 'Goals', 
+          user: req.user,
+          startValue,
+          dueValue
+      })
+  })
+}
+
+function update(req, res) {
+  Goal.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    overwrite: false
+  }, 
+  function(err, goal) {
+    res.redirect(`/goals/${goal._id}`);
+  });
 }
