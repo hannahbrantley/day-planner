@@ -1,22 +1,20 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
-<h1>You are on the today page now!</h1>
-<ul class="right">
-	<li>
-	<% if (user) { %>
-    <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-    <h2>you are logged in</h2>
-    <p>Welcome <%= user.avatar %></p>
-    <title><%= title %></title>
-	<% } else { %>
-    <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-    <h2>you are not logged in</h2>
-	<% } %>
-	</li>
-</ul>
 
-<div class="container">Goal</div>
-<div class="container">Action Items</div>
-<div class="container">Journal</div>
-<div class="container">Habits</div>
+<div class="container-lg">
+  <h6>Current Goal:</h6>
+</div>
+
+<div class="container-lg">
+  <h6>Today's Action Items</h6>
+</div>
+
+<div class="container-lg">
+  <h6>Journal</h6>
+</div>
+
+<div class="container-lg">
+  <h6>Habit Tracker</h6>
+</div>
+
 <%- include('./partials/footer') %>

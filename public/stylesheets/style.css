@@ -1,18 +1,13 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: red;
 }
 
 a {
   color: #00B7FF;
 }
 
-.navbar ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: nowrap; /* assumes you only want one row */
+.container-lg {
+  border: 2px solid gray;
+  border-radius: 10px;
 }
