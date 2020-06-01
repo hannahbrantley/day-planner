@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<form id="new-form" action="/habits" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <br>
+  <p>Frequency:</p>
+  <label>Sun</label>
+  <input type="checkbox" name="A">
+  <label>Mon</label>
+  <input type="checkbox" name="B">
+  <label>Tue</label>
+  <input type="checkbox" name="C">
+  <label>Wed</label>
+  <input type="checkbox" name="D">
+  <label>Thu</label>
+  <input type="checkbox" name="E">
+  <label>Fri</label>
+  <input type="checkbox" name="F">
+  <label>Sat</label>
+  <input type="checkbox" name="G">
+  <br>
+  <label>Goals:</label>
+  <select name="goalId">
+    <%- goals.map(g =>
+    `<option value="${g._id}">${g.name}</option>`
+    ).join('') %>
+  </select>
+
+  <input type="submit" value="Create Habit">
+</form>
+
+<%- include('../partials/footer') %>
