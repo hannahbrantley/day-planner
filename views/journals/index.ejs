@@ -5,6 +5,9 @@
 <% journals.forEach(function(j) { %>
     <div><%= j.date %></div>
     <div><%= j.content %></div>
+    <form action="/journals/<%= j._id %>?_method=DELETE" class="delete-form" method="POST">
+      <button type="submit">Delete</button>
+     </form>
   <% }); %>
  
  <%- include('../partials/footer') %>

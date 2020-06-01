@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+<h2>Habits OKAY</h2>
+
+<a href="/habits/new">New Habit</a>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Habit Name</th>
+      <th>Details</th>
+      <th>Due Date</th>
+      <th>Done</th>
+      <th>Goal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% habits.forEach(function(h) { %>
+      <tr>
+        <td><%= h.name %></td>
+        <td><a href="/habits/<%= h._id %>/edit">Edit</a></td>
+        <td>
+          <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">
+            <button type="submit">Delete <%= h.name %></button>
+          </form>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+<%- include('../partials/footer') %>

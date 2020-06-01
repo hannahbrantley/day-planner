@@ -62,6 +62,8 @@ function edit(req, res) {
 }
 
 function update(req, res) {
+  console.log('first: ', req.body.done);
+  if (req.body.done) {req.body.done = true};
   Goal.findById(req.body.goalId, function (err, goal) {
     req.body.goal = goal;
     Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, task) {

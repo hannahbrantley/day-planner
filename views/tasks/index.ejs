@@ -7,6 +7,7 @@
 <table id="list">
   <thead>
     <tr>
+      <th></th>
       <th>Task Name</th>
       <th>Details</th>
       <th>Due Date</th>
@@ -17,15 +18,19 @@
   <tbody>
     <% tasks.forEach(function(t) { %>
       <tr>
+        <td>
+          <form action="/tasks/<%= t._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="done" onChange="this.form.submit()">
+          </form>
+        </td>
         <td><%= t.name %></td>
         <td><%= t.details %></td>
         <td><%= t.dueDate %></td>
-        <td><%= t.done %></td>
         <td><%= t.goal %></td>
         <td><a href="/tasks/<%= t._id %>/edit">Edit</a></td>
         <td>
           <form action="/tasks/<%= t._id %>?_method=DELETE" class="delete-form" method="POST">
-          <button type="submit">Delete <%= t.name %></button>
+            <button type="submit">Delete <%= t.name %></button>
           </form>
         </td>
       </tr>

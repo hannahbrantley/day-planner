@@ -2,7 +2,8 @@ const Journal = require('../models/journal');
 
 module.exports = {
   index, 
-  create
+  create,
+  delete: deleteJournal
 }
 
 function index(req, res) {
@@ -16,7 +17,14 @@ function index(req, res) {
 }
 
 function create(req, res) {
+  if (!!req.body.content) {
   Journal.create(req.body, function(err, journal) {
     res.redirect('/today');
+  })}
+}
+
+function deleteJournal(req, res) {
+  Journal.findByIdAndRemove(req.params.id, function(err, deleteConfirmation) {
+    res.redirect('/journals');
   })
 }
