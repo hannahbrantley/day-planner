@@ -17,16 +17,24 @@
   </thead>
   <tbody>
     <% tasks.forEach(function(t) { %>
+      <% console.log(t.done) %>
       <tr>
         <td>
-          <form action="/tasks/<%= t._id %>?_method=PUT" method="POST">
-          <input type="checkbox" name="done" onChange="this.form.submit()">
+          <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="done"
+          <% if (t.done) { %>
+          <%= ' checked ' %> 
+          <% } %>
+          onChange="this.form.submit()">
           </form>
         </td>
         <td><%= t.name %></td>
         <td><%= t.details %></td>
         <td><%= t.dueDate %></td>
-        <td><%= t.goal %></td>
+        <td><%= t.done %></td>
+        <td> <% if (t.goal) { %>
+             <%= t.goal.name %>
+            <% } %> </td>
         <td><a href="/tasks/<%= t._id %>/edit">Edit</a></td>
         <td>
           <form action="/tasks/<%= t._id %>?_method=DELETE" class="delete-form" method="POST">

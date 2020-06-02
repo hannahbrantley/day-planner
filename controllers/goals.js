@@ -38,16 +38,13 @@ function create(req, res) {
       console.log(err) 
       return res.redirect('/goals');
     }
-    console.log(goal);
     return res.redirect('/goals');
   })
 }
 
 function show(req, res) {
   Goal.findById(req.params.id, function(err, thisGoal) {
-    console.log('this goal: ', thisGoal);
     Task.find({goal: thisGoal}, function(err, tasks) {
-      console.log(tasks);
       res.render('goals/show', { 
         thisGoal,
         title: 'Goals', 

@@ -7,11 +7,7 @@
 <table id="list">
   <thead>
     <tr>
-      <th></th>
       <th>Habit Name</th>
-      <th>Details</th>
-      <th>Due Date</th>
-      <th>Done</th>
       <th>Goal</th>
     </tr>
   </thead>
@@ -19,7 +15,16 @@
     <% habits.forEach(function(h) { %>
       <tr>
         <td><%= h.name %></td>
+        <td>
+        <% if (h.goal) { %> 
+        <% h.goal.forEach(function(g) { %>
+          <%= g.name %>, 
+        <%  }) %>
+        <% } %>
+        </td>
+
         <td><a href="/habits/<%= h._id %>/edit">Edit</a></td>
+        <td><a href="/habits/<%= h._id %>">Details</a></td>
         <td>
           <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">
             <button type="submit">Delete <%= h.name %></button>

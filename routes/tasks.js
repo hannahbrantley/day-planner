@@ -4,6 +4,7 @@ var tasksCtrl = require('../controllers/tasks');
 router.get('/', isLoggedIn, tasksCtrl.index);
 router.get('/new', isLoggedIn, tasksCtrl.new);
 router.post('/', isLoggedIn, tasksCtrl.create);
+router.put('/isdone/:id', isLoggedIn, tasksCtrl.updateDone);
 router.get('/:id/edit', isLoggedIn, tasksCtrl.edit);
 router.put('/:id', isLoggedIn, tasksCtrl.update);
 router.delete('/:id', isLoggedIn, tasksCtrl.delete);

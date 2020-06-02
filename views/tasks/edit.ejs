@@ -13,12 +13,13 @@
 
   <select name="goalId">
     <% goals.forEach(function(goal) { %>
-      <% if (goal._id.toString() === task.goal._id.toString()) { %>
+      <% if (task.goal && goal._id.toString() === task.goal._id.toString()) { %>
       <option value="<%= goal._id %>" selected="selected"><%= goal.name %></option>
       <% } else { %>
       <option value="<%= goal._id %>"><%= goal.name %></option>  
       <% } %>
     <% }) %>
+    <option value="null"> -- </option>
   </select>
 
   <input type="submit" value="Update Task">

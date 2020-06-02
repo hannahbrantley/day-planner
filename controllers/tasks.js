@@ -7,7 +7,8 @@ module.exports = {
   create,
   edit,
   update, 
-  delete: deleteTask
+  delete: deleteTask, 
+  updateDone
 }
 
 function index(req, res) {
@@ -49,7 +50,7 @@ Goal.findById(req.body.goalId, function (err, goal) {
 
 function edit(req, res) {
   Task.findById(req.params.id, function(err, task) {
-    const dueValue = task.dueDate.toISOString().slice(0, 16);
+    const dueValue = task.dueDate.toISOString().slice(0, 10);
     Goal.find({}, function(err, goals) {
       res.render('tasks/edit', {
           task,
@@ -62,14 +63,33 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log('first: ', req.body.done);
-  if (req.body.done) {req.body.done = true};
-  Goal.findById(req.body.goalId, function (err, goal) {
-    req.body.goal = goal;
-    Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, task) {
-      res.redirect('/tasks');
+  Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, task) {
+    Goal.findById(req.body.goalId, function (err, goal) {
+      task.goal = goal;
+      task.save(function(err) {
+        if (err) {
+          console.log(err) 
+          return res.redirect('/tasks');
+        }
+          return res.redirect('/tasks'); 
+       });
     })
-  });
+  })
+}
+
+function updateDone(req, res) {
+  Task.findById(req.params.id, function(err, task) {
+    task.done = !task.done;
+    task.save(function(err) {
+      if (err) { 
+        console.log(err); 
+        res.redirect('/tasks');
+      } else { 
+        console.log(task);
+        res.redirect('back');
+      }
+    })
+  })
 }
 
 function deleteTask (req, res) {

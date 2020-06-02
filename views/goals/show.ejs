@@ -19,11 +19,29 @@
       </tr>
     </tbody>
   </table>
-  <h2>Tasks</h2>
-  <% tasks.forEach(function(task) { %>
-    <div><%= task.name %></div>
+  <h5>Tasks</h5>
+  <table>
+  <% tasks.forEach(function(t) { %>
+    <tr>
+    <td>
+    <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
+      <input type="checkbox" name="done"
+      <% if (t.done) { %>
+      <%= ' checked ' %> 
+      <% } %>
+      onChange="this.form.submit()">
+    </form>
+    </td>
+    <td>
+    <div><%= t.name %></div>
+    </td>
+    </tr>
   <% }) %>
+  </table>
 
+  <h5>Add new task</h5>
+
+  
   <a href="/goals/<%= thisGoal.id %>/edit">Edit Goal</a>
 
   <%- include('../partials/footer') %>

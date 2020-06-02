@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Habit Name</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= habit.name %></td>
+        <td>Done today?</td>
+        <td>
+          <form action="/habits/<%= habit._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="complete" onChange="this.form.submit()">
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="/habits/<%= habit.id %>/edit">Edit Habit</a>
+
+  <%- include('../partials/footer') %>

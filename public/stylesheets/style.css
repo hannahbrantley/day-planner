@@ -10,4 +10,8 @@ a {
 .container-lg {
   border: 2px solid gray;
   border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
 }
+
+

@@ -1,8 +1,11 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
 
-<% let today = new Date(new Date().setHours(0,0,0,0)) %>
-<h2><%= today %></h2>
+<div class="container-lg">
+<% let today = new Date() %>
+<% today.setHours(0,0,0,0) %>
+<h2><%= today.toDateString() %></h2>
+</div>
 
 <div class="container-lg">
   <h6>Current Goal:</h6>
@@ -22,13 +25,27 @@
   <h6>Today's Action Items</h6>
   <% if (tasks) { %>
     <h6>ya we got tasks</h6>
+    <table>
     <% tasks.forEach(function(t) { %>
-      <% if (t.dueDate.setHours(0,0,0,0) <= today) { %>
-        <%= t.name %>
-        <%= t.dueDate.toDateString() %>
+      <% if (t.dueDate) { %>
+      <% if (t.dueDate.setHours(0,0,0,0) <= today && t.done === false) { %>
+        <tr>
+        <td>        
+          <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="done"
+          <% if (t.done) { %>
+          <%= ' checked ' %> 
+          <% } %>
+          onChange="this.form.submit()">
+          </form>
+        </td>
+        <td><%= t.name %></td>
+        <td><%= t.dueDate.toDateString() %></td>
+        </tr>
       <% } %>
-      <br>
+      <% } %>
      <% }) %>
+    </table>
   <% } else { %>
     <h6>No Tasks Yet</h6>
   <% } %>
@@ -46,6 +63,29 @@
 
 <div class="container-lg">
   <h6>Habit Tracker</h6>
+  <% if (habits) { %>
+    <h6>ya we got habitz</h6>
+    <table>
+    <% habits.forEach(function(h) { %>
+      <% if (h.frequency.includes(today.getDay())) { %>
+        <tr>
+        <td>        
+          <form action="/habits/isdone/<%= h._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="done" onChange="this.form.submit()"
+          <% if (h.history.includes(today.toString())) { %>
+          <%= ' checked ' %> 
+          <% } %>
+          >
+          </form>
+        </td>
+        <td><%= h.name %></td>
+        </tr>
+      <% } %>
+      <% }) %>
+    </table>
+  <% } else { %>
+  <h6>No Habits Today </h6>
+  <% } %>
 </div>
 
 <%- include('./partials/footer') %>

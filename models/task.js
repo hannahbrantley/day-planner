@@ -10,10 +10,7 @@ const taskSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  goal: {
-    type: Schema.Types.ObjectId,
-    ref: 'Goal'
-  }
+  goal: {}
 });
 
 module.exports = mongoose.model('Task', taskSchema);
