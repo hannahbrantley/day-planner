@@ -14,4 +14,12 @@ a {
   padding: 5px;
 }
 
+#chart {
+  display: grid;
+  grid-template-columns: repeat(7, 4vmin);
+}
 
+#chart div {
+  border: 1px solid grey;
+  display: grid;
+}

@@ -59,6 +59,12 @@ function create(req, res) {
     const habit = new Habit(req.body);
     habit.user = req.user;
     habit.goal.push(selectedGoal);
+
+    for (let i = 0; i < 20; i++) {
+      let x = new Date(+(new Date()) - Math.floor(Math.random()*10000000000));
+      habit.history.push(x);
+    }
+
     habit.save(function(err) {
       if (err) {
         console.log(err) 
