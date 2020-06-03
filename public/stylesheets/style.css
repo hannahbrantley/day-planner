@@ -16,10 +16,26 @@ a {
 
 #chart {
   display: grid;
-  grid-template-columns: repeat(7, 4vmin);
+  grid-template-columns: [first] 20% repeat(7, 4vmin);
+  gap: 2px;
+}
+
+
+#chart #label {
+  border: none;
 }
 
 #chart div {
   border: 1px solid grey;
+  border-radius: 50%;
   display: grid;
 }
+
+.empty {
+  background-color: gray;
+}
+
+.full {
+  background-color: orange;
+}
+
