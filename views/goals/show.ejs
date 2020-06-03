@@ -1,25 +1,18 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
-<table id="list">
-  <thead>
-    <tr>
-      <th>Goal Name</th>
-      <th>Details</th>
-      <th>Start Date</th>
-      <th>Due Date</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><%= thisGoal.name %></td>
-        <td><%= thisGoal.details %></td>
-        <td><%= thisGoal.startDate %></td>
-        <td><%= thisGoal.dueDate %></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5>Tasks</h5>
+
+<div class="container-lg">
+  <div class="item-a"><h6><%= thisGoal.name %></h6></div>
+  <div><%= thisGoal.details %></div>
+  <h8>Timeline</h8>
+  <div>
+    <%= moment(thisGoal.startDate).format('dddd' + ', ' + 'MMMM Do YYYY') %> - <%= moment(thisGoal.dueDate).format('dddd' + ', ' + 'MMMM Do YYYY') %>
+  </div>
+</div>
+
+<div class="container-lg">
+  <div class="item-b"><h6>Tasks</h6></div>
   <table>
   <% tasks.forEach(function(t) { %>
     <tr>
@@ -38,8 +31,33 @@
     </tr>
   <% }) %>
   </table>
-
   <h5>Add new task</h5>
+  </div>
+
+
+  <div class="container-lg">
+    <div class="item-c"><h6>Habits</h6></div>
+    <% if (habits) { %>
+    <table>
+    <% habits.forEach(function(t) { %>
+      <tr>
+      <td>
+      <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
+        <input type="checkbox" name="done"
+        <% if (t.done) { %>
+        <%= ' checked ' %> 
+        <% } %>
+        onChange="this.form.submit()">
+      </form>
+      </td>
+      <td>
+      <div><%= t.name %></div>
+      </td>
+      </tr>
+    <% }) %>
+    </table>
+    <% } %>
+    </div>
 
   
   <a href="/goals/<%= thisGoal.id %>/edit">Edit Goal</a>

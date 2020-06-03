@@ -8,7 +8,7 @@
 </div>
 
 <div class="container-lg">
-  <div class="item-a"><h6>Current Goal</h6></div>
+  <div class="item-a"><a class="header-link" href="/goals"><h6>Goals</h6></a></div>
   <% if (goals) { %>
     <% goals.forEach(function(g) { %>
       <% if (g.active === true) { %>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="container-lg">
-  <div class="item-b"><h6>Action Items</h6></div>
+  <div class="item-b"><a class="header-link" href="/tasks"><h6>Action Items</h6></a></div>
   <% if (tasks) { %>
     <table>
     <% tasks.forEach(function(t) { %>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="container-lg">
-  <div class="item-c"><h6>Journal</h6></div>
+  <div class="item-c"><a class="header-link" href="/journals"><h6>Journal</h6></a></div>
 
   <form id="new-form" action="/journals" method=" POST">
     <input type="text" name="content">
@@ -60,7 +60,7 @@
 </div>
 
 <div class="container-lg">
-  <div class="item-b"><h6>Habits</h6></div>
+  <div class="item-b"><a class="header-link" href="/habits"><h6>Habits</h6></a></div>
   <% if (habits) { %>
     <% habits.forEach(function(h) { %>
       <% if (h.frequency.includes(today.getDay())) { %>
@@ -76,7 +76,7 @@
           >
           </form>
         </td>
-        <td><a href="/goals/<%= h._id %>"><%= h.name %></a></td>
+        <td><a href="/habits/<%= h._id %>"><%= h.name %></a></td>
         </tr>
       </table>
       </div>

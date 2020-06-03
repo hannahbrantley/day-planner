@@ -1,5 +1,7 @@
 const Goal = require('../models/goal');
 const Task = require('../models/task');
+const Habit = require('../models/habit');
+const moment = require('moment');
 
 module.exports = {
   index, 
@@ -17,7 +19,8 @@ function index(req, res) {
     res.render('goals', { 
       title: 'Goals', 
       user: req.user, 
-      goals
+      goals,
+      moment
     });
   });
 }
@@ -45,11 +48,15 @@ function create(req, res) {
 function show(req, res) {
   Goal.findById(req.params.id, function(err, thisGoal) {
     Task.find({goal: thisGoal}, function(err, tasks) {
+      Habit.find({goal: thisGoal}, function(err, habits) {
       res.render('goals/show', { 
         thisGoal,
         title: 'Goals', 
         user: req.user,
-        tasks
+        tasks,
+        moment, 
+        habits
+      })
       })
     });
   })

@@ -1,35 +1,31 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h2>Goals Page Wooo</h2>
 
-<a href="/goals/new">New Goal</a>
-
+<div style="overflow-x:auto;" class="container-lg goals">
 <table id="list">
   <thead>
-    <tr>
+    <tr class="item-a">
+      <th></th>
       <th>Goal Name</th>
-      <th>Details</th>
       <th>Start Date</th>
       <th>Due Date</th>
     </tr>
-  </thead>
+  </thead>  
   <tbody>
     <% goals.forEach(function(g) { %>
       <tr>
-        <td><%= g.name %></td>
-        <td><%= g.details %></td>
-        <td><%= g.startDate %></td>
-        <td><%= g.dueDate %></td>
-        <td><a href="/goals/<%= g._id %>">SEE MORE</a></td>
         <td>
           <form action="/goals/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
-          <button type="submit">Delete <%= g.name %></button>
+            <button type="submit">X</button>
           </form>
         </td>
+        <td><div class="link"><a href="/goals/<%= g._id %>"><%= g.name %></a></div></td>
+        <td><%= moment(g.startDate).format("MMM Do"); %></td>
+        <td><%= moment(g.dueDate).format("MMM Do"); %></td>
       </tr>
       <% }); %>
     </tbody>
   </table>
-
-
+  </div>
+  <a href="/goals/new">New Goal</a>
 <%- include('../partials/footer') %>
