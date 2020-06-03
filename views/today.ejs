@@ -12,7 +12,7 @@
   <% if (goals) { %>
     <% goals.forEach(function(g) { %>
       <% if (g.active === true) { %>
-      <%= g.name %>
+      <div class="link"><a href="/goals/<%= g._id %>"><%= g.name %></a></div>
      <% } %>
     <% }); %>
   <% } else { %>
@@ -60,11 +60,12 @@
 </div>
 
 <div class="container-lg">
-  <h6>Habits</h6>
+  <div class="item-b"><h6>Habits</h6></div>
   <% if (habits) { %>
-    <table>
     <% habits.forEach(function(h) { %>
       <% if (h.frequency.includes(today.getDay())) { %>
+        <div class="link">
+          <table>
         <tr>
         <td>        
           <form action="/habits/isdone/<%= h._id %>?_method=PUT" method="POST">
@@ -75,12 +76,13 @@
           >
           </form>
         </td>
-        <td><%= h.name %></td>
+        <td><a href="/goals/<%= h._id %>"><%= h.name %></a></td>
         </tr>
-      <% } %>
-      <% }) %>
-    </table>
-  <% } else { %>
+      </table>
+      </div>
+        <% } %>
+        <% }) %>
+      <% } else { %>
   <h6>No Habits Today </h6>
   <% } %>
 </div>

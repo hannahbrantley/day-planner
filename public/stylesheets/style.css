@@ -4,7 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-a {
+.navbar a {
   color: white;
 }
 
@@ -15,8 +15,14 @@ h2 {
   padding: 5px;
 }
 
-a:hover {
-  color: white;
+a {
+  color: #264653;
+}
+
+.link:hover, a:hover {
+  background-color: rgb(239, 242, 245);
+  color: #A23216;
+  text-decoration: none;
 }
 
 #yoohoo {
@@ -34,6 +40,9 @@ a:hover {
   background-color: rgba(255, 255, 255);
   margin: 5px;
   padding: 0px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #264653;
 }
 
 .container-lg .goals {
@@ -52,18 +61,24 @@ a:hover {
   grid-area: header;
   background-color: rgb(233, 196, 106);
   color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .item-b {
   grid-area: header;
   background-color: rgb(42, 157, 143);
   color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .item-c {
   grid-area: header;
   background-color: rgb(244, 162, 97);
   color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 #chart {
