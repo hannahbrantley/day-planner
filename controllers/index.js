@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Goal = require('../models/goal');
 const Task = require('../models/task');
 const Habit = require('../models/habit');
+const moment = require('moment');
 
 module.exports = {
     index
@@ -17,6 +18,7 @@ function index(req, res) {
     Goal.find({user: req.user}, function(err, goals) {
     Task.find({user: req.user}, function (err, tasks) {
     Habit.find({user: req.user}, function (err, habits) {
+      let day = moment();
       res.render('today', {
         title: "Today",
         users,
@@ -25,7 +27,8 @@ function index(req, res) {
         user: req.user, 
         goals, 
         tasks,
-        habits
+        habits,
+        day
         })
       })
      });

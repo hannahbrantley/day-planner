@@ -1,22 +1,74 @@
 body {
+  background-color: rgb(239, 242, 245);
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
 }
 
-.container-lg {
-  border: 2px solid gray;
-  border-radius: 10px;
+h2 {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 18px;
+  color: white;
+  padding: 5px;
+}
+
+a:hover {
+  color: white;
+}
+
+#yoohoo {
+  background-color: #264653;
+}
+
+.navbar .container-lg {
+  background-color: rgba(255, 255, 255);
+  color: #264653;
   margin: 5px;
   padding: 5px;
 }
 
+.container-lg {
+  background-color: rgba(255, 255, 255);
+  margin: 5px;
+  padding: 0px;
+}
+
+.container-lg .goals {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header header header"
+    "main main main main"
+    "footer footer footer footer";
+  background-color: rgba(255, 255, 255);
+  padding: 0px;
+}
+
+.item-a {
+  grid-area: header;
+  background-color: rgb(233, 196, 106);
+  color: white;
+}
+
+.item-b {
+  grid-area: header;
+  background-color: rgb(42, 157, 143);
+  color: white;
+}
+
+.item-c {
+  grid-area: header;
+  background-color: rgb(244, 162, 97);
+  color: white;
+}
+
 #chart {
   display: grid;
-  grid-template-columns: [first] 20% repeat(7, 4vmin);
+  grid-template-columns: [first] 20% repeat(7, auto);
   gap: 2px;
 }
 
@@ -26,8 +78,7 @@ a {
 }
 
 #chart div {
-  border: 1px solid grey;
-  border-radius: 50%;
+  margin: 2px;
   display: grid;
 }
 
@@ -39,3 +90,25 @@ a {
   background-color: orange;
 }
 
+img {
+  border: 1px solid white;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+}
+
+.today {
+  background-color: #e76f51;
+  align-content: center;
+}
+
+#goals-header {
+  background-color: rgb(67, 195, 178);
+}
+
+h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  padding: 5px;
+}

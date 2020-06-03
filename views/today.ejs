@@ -1,30 +1,28 @@
 <%- include('./partials/header') %>
 <%- include('./partials/nav') %>
 
-<div class="container-lg">
+<div class="container-lg today">
 <% let today = new Date() %>
 <% today.setHours(0,0,0,0) %>
-<h2><%= today.toDateString() %></h2>
+<h2><%= day.format('dddd' + ', ' + 'MMMM Do YYYY') %></h2>
 </div>
 
 <div class="container-lg">
-  <h6>Current Goal:</h6>
+  <div class="item-a"><h6>Current Goal</h6></div>
   <% if (goals) { %>
-    <h6>ya we got goals</h6>
     <% goals.forEach(function(g) { %>
       <% if (g.active === true) { %>
       <%= g.name %>
      <% } %>
     <% }); %>
   <% } else { %>
-    <h6>No Active Yet</h6>
+    <h6>No Active Goals Yet</h6>
   <% } %>
 </div>
 
 <div class="container-lg">
-  <h6>Today's Action Items</h6>
+  <div class="item-b"><h6>Action Items</h6></div>
   <% if (tasks) { %>
-    <h6>ya we got tasks</h6>
     <table>
     <% tasks.forEach(function(t) { %>
       <% if (t.dueDate) { %>
@@ -40,7 +38,6 @@
           </form>
         </td>
         <td><%= t.name %></td>
-        <td><%= t.dueDate.toDateString() %></td>
         </tr>
       <% } %>
       <% } %>
@@ -53,7 +50,7 @@
 </div>
 
 <div class="container-lg">
-  <h6>Journal</h6>
+  <div class="item-c"><h6>Journal</h6></div>
 
   <form id="new-form" action="/journals" method=" POST">
     <input type="text" name="content">
@@ -63,9 +60,8 @@
 </div>
 
 <div class="container-lg">
-  <h6>Habit Tracker</h6>
+  <h6>Habits</h6>
   <% if (habits) { %>
-    <h6>ya we got habitz</h6>
     <table>
     <% habits.forEach(function(h) { %>
       <% if (h.frequency.includes(today.getDay())) { %>

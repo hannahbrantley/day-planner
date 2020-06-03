@@ -1,27 +1,9 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
-<table id="list">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td>
-          <form action="/habits/<%= habit._id %>?_method=PUT" method="POST">
-          <input type="checkbox" name="complete" onChange="this.form.submit()">
-          </form>
-        </td>
-        <td><%= habit.name %></td>
-        <td><%= habit.target %></td>
-        <td><%= habit.history.length %></td>
-      </tr>
-    </tbody>
-  </table>
+<h5><%= habit.name %></h5>
 
+<div class="container-lg">
   <% if (habit.history.length) { %>
     <% let array = habit.history.map(d => d.getDay()) %>
     <div id="chart">
@@ -33,7 +15,7 @@
     <% let i = 0 %>
     <% let z = 0 %>
     <% while (i < array.length) { %>
-      <div class="full"><%= array[i] %></div>
+      <div class="full"></div>
       <% z += 1 %>
 
       <% if (array[i] >= array[i + 1]) { %>
@@ -59,6 +41,7 @@
       <% } %>   
       </div>
   <% } %>   
+</div>
 
   <a href="/habits/<%= habit.id %>/edit">Edit Habit</a>
 

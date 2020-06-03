@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override'); 
+const moment = require('moment');
 
 // load the env vars
 require('dotenv').config();
