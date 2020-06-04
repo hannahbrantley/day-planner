@@ -1,18 +1,21 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h2>Tasks Yaaa</h2>
 
-<a href="/tasks/new">New Task</a>
+<div class="container-lg today">
+  <h2>Tasks</h2>
+</div>
 
-<table id="list">
-  <thead>
-    <tr>
+<div style="overflow-x:auto;" class="container-lg goals">
+  <table id="list">
+    <thead>
+      <tr class="item-a">
       <th></th>
       <th>Task Name</th>
       <th>Details</th>
       <th>Due Date</th>
-      <th>Done</th>
       <th>Goal</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -30,20 +33,21 @@
         </td>
         <td><%= t.name %></td>
         <td><%= t.details %></td>
-        <td><%= t.dueDate %></td>
-        <td><%= t.done %></td>
+        <td><%= moment(t.dueDate).format('dddd' + ', ' + 'MMMM Do') %></td>
         <td> <% if (t.goal) { %>
              <%= t.goal.name %>
             <% } %> </td>
         <td><a href="/tasks/<%= t._id %>/edit">Edit</a></td>
         <td>
           <form action="/tasks/<%= t._id %>?_method=DELETE" class="delete-form" method="POST">
-            <button type="submit">Delete <%= t.name %></button>
+            <button type="submit">X</button>
           </form>
         </td>
       </tr>
       <% }); %>
     </tbody>
   </table>
+  <a href="/tasks/new">New Task</a>
+  </div>
 
 <%- include('../partials/footer') %>

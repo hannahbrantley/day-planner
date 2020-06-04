@@ -55,7 +55,8 @@ function show(req, res) {
         user: req.user,
         tasks,
         moment, 
-        habits
+        habits,
+        page: undefined
       })
       })
     });

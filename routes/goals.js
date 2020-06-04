@@ -4,8 +4,8 @@ var goalsCtrl = require('../controllers/goals');
 router.get('/', isLoggedIn, goalsCtrl.index);
 router.get('/new', isLoggedIn, goalsCtrl.new);
 router.post('/', isLoggedIn, goalsCtrl.create);
-router.get('/:id', isLoggedIn, goalsCtrl.show);
 router.get('/:id/edit', isLoggedIn, goalsCtrl.edit);
+router.get('/:id', isLoggedIn, goalsCtrl.show);
 router.put('/:id', isLoggedIn, goalsCtrl.update);
 router.delete('/:id', isLoggedIn, goalsCtrl.delete);
 

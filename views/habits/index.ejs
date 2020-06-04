@@ -1,39 +1,44 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h2>Habits OKAY</h2>
 
-<a href="/habits/new">New Habit</a>
+<div class="container-lg today">
+  <h2>Habits</h2>
+</div>
 
-<table id="list">
-  <thead>
-    <tr>
-      <th>Habit Name</th>
+<div style="overflow-x:auto;" class="container-lg goals">
+  <table id="list">
+    <thead>
+      <tr class="item-c">
+      <th>Habit</th>
       <th>Goal</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% habits.forEach(function(h) { %>
       <% console.log(h) %>
       <tr>
-        <td><%= h.name %></td>
+        <td><a href="/habits/<%= h._id %>"><%= h.name %></a></td>
         <td>
         <% if (h.goal) { %> 
         <% h.goal.forEach(function(g) { %>
-          <%= g.name %>, 
+          <a href="/goals/<%= g._id %>"><%= g.name %></a> 
         <%  }) %>
         <% } %>
         </td>
 
-        <td><a href="/habits/<%= h._id %>/edit">Edit</a></td>
-        <td><a href="/habits/<%= h._id %>">Details</a></td>
+        
         <td>
           <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">
-            <button type="submit">Delete <%= h.name %></button>
+            <button type="submit">X</button>
           </form>
         </td>
       </tr>
       <% }); %>
     </tbody>
   </table>
+  </div>
 
 <%- include('../partials/footer') %>

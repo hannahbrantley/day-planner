@@ -1,13 +1,20 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h1>Journals!!</h1>
+
+<div class="container-lg today">
+  <h2>Journals</h2>
+  </div>
+
 
 <% journals.forEach(function(j) { %>
-    <div><%= j.date %></div>
-    <div><%= j.content %></div>
+  <div class="container-lg">
+    <div class="item-b"><%= moment(j.date).format('dddd' + ', ' + 'MMMM Do YYYY') %></div>
+    <%= j.content %>
     <form action="/journals/<%= j._id %>?_method=DELETE" class="delete-form" method="POST">
       <button type="submit">Delete</button>
      </form>
+    </div>
+    
   <% }); %>
  
  <%- include('../partials/footer') %>

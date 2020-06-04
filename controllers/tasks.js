@@ -1,5 +1,6 @@
 const Task = require('../models/task');
 const Goal = require('../models/goal');
+const moment = require('moment');
 
 module.exports = {
   index, 
@@ -8,7 +9,9 @@ module.exports = {
   edit,
   update, 
   delete: deleteTask, 
-  updateDone
+  updateDone,
+  newForGoal, 
+  showForm
 }
 
 function index(req, res) {
@@ -16,7 +19,8 @@ function index(req, res) {
     res.render('tasks', { 
       title: 'Tasks', 
       user: req.user, 
-      tasks
+      tasks,
+      moment
     });
   });
 }
@@ -96,4 +100,20 @@ function deleteTask (req, res) {
   Task.findByIdAndRemove(req.params.id, function(err, confirmation) {
     res.redirect('/tasks');
   })
+}
+
+function newForGoal(req, res) {
+  Goal.findById(req.params.id, function (err, goal) {
+
+    res.render('tasks/new', {
+      goals,
+      title: 'Tasks', 
+      user: req.user,
+    });
+  })
+}
+
+function showForm(req, res) {
+  document.getElementById('welcomeDiv').style.display = "block";
+  res.render('goals/show')
 }

@@ -104,14 +104,15 @@ a {
 #chart div {
   margin: 2px;
   display: grid;
+  border-radius: 3px;
 }
 
 .empty {
-  background-color: gray;
+  background-color: #DFF6F4;
 }
 
 .full {
-  background-color: orange;
+  background-color: #2A9D8F;
 }
 
 img {
@@ -140,4 +141,5 @@ h6 {
 table {
   text-align: left;
   overflow-x: auto;
+  width: 100%;
 }

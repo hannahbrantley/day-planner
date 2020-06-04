@@ -1,4 +1,5 @@
 const Journal = require('../models/journal');
+const moment = require('moment');
 
 module.exports = {
   index, 
@@ -11,7 +12,8 @@ function index(req, res) {
     res.render('journals', { 
       title: 'Journals', 
       user: req.user, 
-      journals
+      journals,
+      moment
     });
   });
 }

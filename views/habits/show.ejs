@@ -1,7 +1,9 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
-<h5><%= habit.name %></h5>
+<div class="container-lg today">
+  <h2><%= habit.name %></h2>
+</div>
 
 <div class="container-lg">
   <% if (habit.history.length) { %>
