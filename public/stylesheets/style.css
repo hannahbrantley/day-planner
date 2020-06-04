@@ -8,6 +8,14 @@ body {
   color: white;
 }
 
+.dropdown a {
+  color: #264653;
+}
+
+#navbarDropdownMenuLink {
+  color: white;
+}
+
 h2 {
   font-family: 'Abril Fatface', cursive;
   font-size: 18px;
@@ -142,4 +150,10 @@ table {
   text-align: left;
   overflow-x: auto;
   width: 100%;
+  table-layout: fixed;
+}
+
+#checkbox {
+  width: 8%;
+  padding: 0 5px 0 5px;
 }

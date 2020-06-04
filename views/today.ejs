@@ -28,7 +28,7 @@
       <% if (t.dueDate) { %>
       <% if (t.dueDate.setHours(0,0,0,0) <= today && t.done === false) { %>
         <tr>
-        <td>        
+        <td id="checkbox">        
           <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
           <input type="checkbox" name="done"
           <% if (t.done) { %>
@@ -67,7 +67,7 @@
         <div class="link">
           <table>
         <tr>
-        <td>        
+        <td id="checkbox">        
           <form action="/habits/isdone/<%= h._id %>?_method=PUT" method="POST">
           <input type="checkbox" name="done" onChange="this.form.submit()"
           <% if (h.history.includes(today.toString())) { %>

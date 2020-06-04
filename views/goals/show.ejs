@@ -3,9 +3,13 @@
 
 
 <div class="container-lg">
-  <div class="item-a"><h6><%= thisGoal.name %></h6></div>
-  <div><%= thisGoal.details %></div>
-  <h8>Timeline</h8>
+  <div class="item-a"><h6>Goal</h6></div>
+  <div><%= thisGoal.name %></div>
+  <div><i><%= thisGoal.details %></i></div>
+</div>
+  
+<div class="container-lg">  
+<div class="item-c"><h6>Timeline</h6></div>
   <div>
     <%= moment(thisGoal.startDate).format('dddd' + ', ' + 'MMMM Do YYYY') %> - <%= moment(thisGoal.dueDate).format('dddd' + ', ' + 'MMMM Do YYYY') %>
   </div>
@@ -31,6 +35,7 @@
     </tr>
   <% }) %>
   </table>
+</div>
 
 
   <div class="container-lg">
