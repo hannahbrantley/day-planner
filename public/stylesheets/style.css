@@ -153,6 +153,12 @@ table {
   table-layout: fixed;
 }
 
+th, td {
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+}
+
 #checkbox {
   width: 8%;
   padding: 0 5px 0 5px;

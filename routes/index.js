@@ -1,7 +1,8 @@
-var express = require('express');
+const express = require('express');
 const passport = require('passport');
-var router = express.Router();
-var indexCtrl = require('../controllers/index');
+const router = express.Router();
+const request = require('request');
+const indexCtrl = require('../controllers/index');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/auth/google', passport.authenticate(
   'google',
-  { scope: ['profile', 'email'] }
+  { scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'] }
   ));
   
 router.get('/oauth2callback', passport.authenticate(
@@ -28,4 +29,5 @@ router.get('/logout', function(req, res){
 });
     
 router.get('/today', indexCtrl.index);
+
 module.exports = router;

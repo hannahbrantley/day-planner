@@ -13,29 +13,25 @@
       <% let d = 0 - array[0] %>
       <% let weekOf = habit.history[0] %>
       <% weekOf.setDate(n + d) %>
-      <div id="label"><%= weekOf.toDateString().substring(4, 10) %></div>
+      <div id="label"><%= weekOf.toDateString().substring(4, 15) %></div>
     <% let i = 0 %>
     <% let z = 0 %>
     <% while (i < array.length) { %>
       <div class="full"></div>
       <% z += 1 %>
-
       <% if (array[i] >= array[i + 1]) { %>
-
        <% for (let j = 0; j < habit.target - z; j++) { %>
         <div class="empty"></div>
         <% } %>
-
          </div> 
          <div id="chart">
           <% let n = habit.history[i + 1].getDate() %>
           <% let d = 0 - array[i + 1] %>
           <% let weekOf = habit.history[i + 1] %>
           <% weekOf.setDate(n + d) %>
-          <div id="label"><%= weekOf.toDateString().substring(4, 10) %></div>
+          <div id="label"><%= weekOf.toDateString().substring(4, 15) %></div>
          <% z = 0 %>
         <% } %>
-
         <% i++ %>
         <% } %>
       <% for (let j = 0; j < habit.target - z; j++) { %>

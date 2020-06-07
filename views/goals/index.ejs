@@ -9,7 +9,7 @@
 <table id="list">
   <thead>
     <tr class="item-a">
-      <th></th>
+      <th id="checkbox"></th>
       <th>Goal Name</th>
       <th>Start Date</th>
       <th>Due Date</th>
@@ -18,14 +18,14 @@
   <tbody>
     <% goals.forEach(function(g) { %>
       <tr>
-        <td>
+        <td id="checkbox">
           <form action="/goals/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
             <button type="submit">X</button>
           </form>
         </td>
         <td><div class="link"><a href="/goals/<%= g._id %>"><%= g.name %></a></div></td>
-        <td><%= moment(g.startDate).format("MMM Do"); %></td>
-        <td><%= moment(g.dueDate).format("MMM Do"); %></td>
+        <td><%= moment(g.startDate).format("MMMM Do"); %></td>
+        <td><%= moment(g.dueDate).format("MMMM Do"); %></td>
       </tr>
       <% }); %>
     </tbody>

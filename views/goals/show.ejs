@@ -20,7 +20,7 @@
   <table>
   <% tasks.forEach(function(t) { %>
     <tr>
-    <td>
+    <td id="checkbox">
     <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
       <input type="checkbox" name="done"
       <% if (t.done) { %>
@@ -44,7 +44,7 @@
     <table>
     <% habits.forEach(function(t) { %>
       <tr>
-      <td>
+      <td id="checkbox">
       <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
         <input type="checkbox" name="done"
         <% if (t.done) { %>

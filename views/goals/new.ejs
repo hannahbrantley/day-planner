@@ -1,17 +1,27 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h2>New Goal!</h2>
+<div class="container-lg today">
+  <h2>Goals</h2>
+  </div>
 
+<div class="container-lg">
+<div class="item-a"><h6>Create a New Goal</h6></div>
 <form id="new-form" action="/goals" method="POST">
   <label>Name:</label>
   <input type="text" name="name">
+  <br>
   <label>Details:</label>
-  <input type="text" name="details">
+  <br>
+  <input type="text" name="details" size="50">
+  <br>
   <label>Start Date:</label>
   <input type="date" name="startDate">
+  <br>
   <label>End Date:</label>
   <input type="date" name="dueDate">
+  <br>
   <input type="submit" value="Create Goal">
 </form>
+</div>
 
 <%- include('../partials/footer') %>

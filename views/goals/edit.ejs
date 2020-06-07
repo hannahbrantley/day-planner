@@ -1,18 +1,28 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
-<h2>Edit Goal!</h2>
 
+<div class="container-lg today">
+  <h2>Edit Goal</h2>
+  </div>
+
+<div class="container-lg">
 <form action="/goals/<%= goal._id %>?_method=PUT" method="POST">
   <label>Name:</label>
+  <br>
   <input type="text" name="name" value="<%= goal.name %>">
+  <br>
   <label>Details:</label>
+  <br>
   <input type="text" name="details" value="<%= goal.details %>">
+  <br>
   <label>Start Date:</label>
   <input type="datetime-local" name="startDate" value="<%= startValue %>">
   <label>End Date:</label>
   <input type="datetime-local" name="dueDate" value="<%= dueValue %>">
+  <br>
   <input type="submit" value="Update Goal">
 </form>
+</div>
 
 <form action="/goals/<%= goal.id %>?_method=DELETE" class="delete-form" method="POST">
   <input type="submit" value="Delete Goal">

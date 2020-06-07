@@ -1,5 +1,6 @@
 const Habit = require('../models/habit');
 const Goal = require('../models/goal');
+const momentRandom = require('moment-random');
 
 module.exports = {
   index, 
@@ -60,10 +61,35 @@ function create(req, res) {
     habit.user = req.user;
     habit.goal.push(selectedGoal);
 
-    for (let i = 0; i < 20; i++) {
-      let x = new Date(+(new Date()) - Math.floor(Math.random()*10000000000));
-      habit.history.push(x);
+    function isDateInArray(x, array) {
+      for (var i = 0; i < array.length; i++) {
+        if (x.getTime() === array[i].getTime()) {
+          return true;
+        }
+      }
+      return false;
     }
+
+
+    let randomDates = [];
+
+    for (let i = 0; i < 30; i++) {
+      let x = momentRandom("2020-06-01", "2020-05-01").set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+      let y = new Date(x);
+      randomDates.push(y);
+    }
+
+    const uniqueDates = [];
+    for (var i = 0; i < randomDates.length; i++) {
+      if (!isDateInArray(randomDates[i], uniqueDates)) {
+        uniqueDates.push(randomDates[i]);
+      }
+    }
+    
+    let sortedArray = uniqueDates.sort((a, b) => a.valueOf() - b.valueOf());
+
+    habit.history = sortedArray;
+    
 
     habit.save(function(err) {
       if (err) {

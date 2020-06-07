@@ -9,17 +9,20 @@
   <table id="list">
     <thead>
       <tr class="item-c">
+      <th id="checkbox"></th>
       <th>Habit</th>
       <th>Goal</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% habits.forEach(function(h) { %>
       <% console.log(h) %>
       <tr>
+        <td id="checkbox">
+          <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">
+            <button type="submit">X</button>
+          </form>
+        </td>
         <td><a href="/habits/<%= h._id %>"><%= h.name %></a></td>
         <td>
         <% if (h.goal) { %> 
@@ -28,17 +31,12 @@
         <%  }) %>
         <% } %>
         </td>
-
-        
-        <td>
-          <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">
-            <button type="submit">X</button>
-          </form>
-        </td>
       </tr>
       <% }); %>
     </tbody>
   </table>
+
+  <a href="/habits/new">New Habit</a>
   </div>
 
 <%- include('../partials/footer') %>
