@@ -32,7 +32,8 @@ function index(req, res) {
           goals, 
           tasks,
           habits,
-          day
+          day,
+          moment
         })
       })
      });

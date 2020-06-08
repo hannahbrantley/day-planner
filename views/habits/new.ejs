@@ -26,7 +26,6 @@
   <input type="text" name="target" placeholder="1-7">
   <label>Goals:</label>
   <select name="goalId">
-    <option>--</option>
     <%- goals.map(g =>
     `<option value="${g._id}">${g.name}</option>`
     ).join('') %>

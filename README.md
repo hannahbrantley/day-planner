@@ -36,5 +36,7 @@
 ## Next Steps
 
 - Integrate with Google Calendar to show a user's events on the Today page
+- Enable users to create tasks and habits without associated Goals
 - Enable users to create tasks and habits directly from the Goals show view
 - Add logic to further focus the Today page
+

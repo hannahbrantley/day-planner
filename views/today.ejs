@@ -38,6 +38,7 @@
           </form>
         </td>
         <td><%= t.name %></td>
+        <td>Due <%= moment(t.dueDate).format('MMMM Do') %></td>
         </tr>
       <% } %>
       <% } %>
