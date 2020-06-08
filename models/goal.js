@@ -6,7 +6,6 @@ const goalSchema = new Schema({
   details: String,
   startDate: { type: Date, required: true },
   dueDate: { type: Date, required: true }, 
-  // active: { type: Boolean, default: true },  
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
