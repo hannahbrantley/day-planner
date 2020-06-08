@@ -54,7 +54,6 @@ function create(req, res) {
     const habit = new Habit(req.body);
     habit.user = req.user;
     habit.goal.push(selectedGoal);
-
     function isDateInArray(x, array) {
       for (var i = 0; i < array.length; i++) {
         if (x.getTime() === array[i].getTime()) {
@@ -63,28 +62,20 @@ function create(req, res) {
       }
       return false;
     }
-
-
     let randomDates = [];
-
     for (let i = 0; i < 30; i++) {
       let x = momentRandom("2020-06-01", "2020-05-01").set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
       let y = new Date(x);
       randomDates.push(y);
     }
-
     const uniqueDates = [];
     for (var i = 0; i < randomDates.length; i++) {
       if (!isDateInArray(randomDates[i], uniqueDates)) {
         uniqueDates.push(randomDates[i]);
       }
     }
-    
     let sortedArray = uniqueDates.sort((a, b) => a.valueOf() - b.valueOf());
-
     habit.history = sortedArray;
-    
-
     habit.save(function(err) {
       if (err) {
         console.log(err) 

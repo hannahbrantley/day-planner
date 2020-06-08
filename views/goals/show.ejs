@@ -1,6 +1,8 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
+<% let today = new Date() %>
+<% today.setHours(0,0,0,0) %>
 
 <div class="container-lg">
   <div class="item-a"><h6>Goal</h6></div>
@@ -42,19 +44,19 @@
     <div class="item-c"><h6>Habits</h6></div>
     <% if (habits) { %>
     <table>
-    <% habits.forEach(function(t) { %>
+    <% habits.forEach(function(h) { %>
       <tr>
-      <td id="checkbox">
-      <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">
-        <input type="checkbox" name="done"
-        <% if (t.done) { %>
-        <%= ' checked ' %> 
-        <% } %>
-        onChange="this.form.submit()">
-      </form>
-      </td>
+        <td id="checkbox">        
+          <form action="/habits/isdone/<%= h._id %>?_method=PUT" method="POST">
+          <input type="checkbox" name="done" onChange="this.form.submit()"
+          <% if (h.history.includes(today.toString())) { %>
+          <%= ' checked ' %> 
+          <% } %>
+          >
+          </form>
+        </td>
       <td>
-      <div><%= t.name %></div>
+      <div><a href="/habits/<%= h._id %>"><%= h.name %></a></div>
       </td>
       </tr>
     <% }) %>
