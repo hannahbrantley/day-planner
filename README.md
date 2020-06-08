@@ -1,8 +1,11 @@
 # Day Planner
 
 ## Screenshots
+![Today page](https://i.imgur.com/WCnXEzk.png)
 
-![alt text](url)
+![Individual Goal](https://i.imgur.com/El8ArNl.png)
+
+![Habit History](https://i.imgur.com/8sRx49x.png)
 
 ## Technologies Used
 - NodeJS
@@ -11,6 +14,8 @@
 - MongoDB
 - EJS
 - MomentJS
+- PassportJS
+- Google People API
 
 ## Getting Started
 1. First, navigate to the [Day Planner Application](https://day-planner-sb.herokuapp.com/today) and log in. 
@@ -29,3 +34,7 @@
 
 
 ## Next Steps
+
+- Integrate with Google Calendar to show a user's events on the Today page
+- Enable users to create tasks and habits directly from the Goals show view
+- Add logic to further focus the Today page
