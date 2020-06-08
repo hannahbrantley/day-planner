@@ -32,8 +32,9 @@
     </form>
     </td>
     <td>
-    <div><%= t.name %></div>
+    <div><a href="/tasks/<%= t._id %>/edit"><%= t.name %></a></div>
     </td>
+    <td><td>Due <%= moment(t.dueDate).format('MMMM Do') %></td></td>
     </tr>
   <% }) %>
   </table>

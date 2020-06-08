@@ -1,6 +1,11 @@
 <%- include('../partials/header') %>
 <%- include('../partials/nav') %>
 
+<div class="container-lg today">
+  <h2>New Task</h2>
+</div>
+  
+<div class="container-lg">
 <form id="new-form" action="/tasks" method="POST">
   <label>Name:</label>
   <input type="text" name="name">
@@ -17,5 +22,6 @@
 
   <input type="submit" value="Create Task">
 </form>
+</div>
 
 <%- include('../partials/footer') %>
