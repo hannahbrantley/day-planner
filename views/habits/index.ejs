@@ -16,7 +16,6 @@
   </thead>
   <tbody>
     <% habits.forEach(function(h) { %>
-      <% console.log(h) %>
       <tr>
         <td id="checkbox">
           <form action="/habits/<%= h._id %>?_method=DELETE" class="delete-form" method="POST">

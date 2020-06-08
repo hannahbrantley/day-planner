@@ -12,7 +12,7 @@ module.exports = {
 }
 
 function index(req, res) {
-  Habit.find({}, function(err, habits) {
+  Habit.find({user: req.user}, function(err, habits) {
     res.render('habits', { 
       title: 'Habits', 
       user: req.user, 
@@ -22,7 +22,7 @@ function index(req, res) {
 }
 
 function newHabit(req, res) {
-  Goal.find({}, function (err, goals) {
+  Goal.find({user: req.user}, function (err, goals) {
     res.render('habits/new', {
       goals,
       title: 'Habits', 
@@ -33,22 +33,17 @@ function newHabit(req, res) {
 
 function updateDone(req, res) {
   Habit.findById(req.params.id, function(err, habit) {
-    console.log('updateDone - first habit:', habit);
     let today = new Date();
     today.setHours(0,0,0,0);
     if (req.body.done === 'on') {
       habit.history.push(today);
     } else {
-      console.log('not done baby');
       let idx = habit.history.indexOf(today.toString());
-      console.log('idx: ', idx);
       if (idx > -1) {
       habit.history.splice(idx, 1);
       }
     }
-    console.log(habit.history);
     habit.save(function(err) {
-      console.log('this is the new saved habit with removed history:', habit);
       return res.redirect('back'); 
       })
   })
@@ -56,7 +51,6 @@ function updateDone(req, res) {
 
 function create(req, res) {
   Goal.findById(req.body.goalId, function (err, selectedGoal) {
-    console.log('create habit req.body: ', req.body);
     const habit = new Habit(req.body);
     habit.user = req.user;
     habit.goal.push(selectedGoal);
@@ -96,7 +90,6 @@ function create(req, res) {
         console.log(err) 
         return res.redirect('/habits/new');
       }
-        console.log('this is the habit:', habit);
         return res.redirect('/habits'); 
      });
     });

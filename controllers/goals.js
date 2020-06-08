@@ -14,8 +14,7 @@ module.exports = {
 }
 
 function index(req, res) {
-  //console.log(req.user);
-  Goal.find({}, function(err, goals) {
+  Goal.find({user: req.user}, function(err, goals) {
     res.render('goals', { 
       title: 'Goals', 
       user: req.user, 
@@ -33,7 +32,6 @@ function newGoal(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.user);
   const goal = new Goal(req.body);
   goal.user = req.user;
   goal.save(function(err) {

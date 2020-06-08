@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function index(req, res) {
-  Journal.find({}, function(err, journals) {
+  Journal.find({user: req.user}, function(err, journals) {
     res.render('journals', { 
       title: 'Journals', 
       user: req.user, 

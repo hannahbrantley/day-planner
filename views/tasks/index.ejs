@@ -19,7 +19,6 @@
   </thead>
   <tbody>
     <% tasks.forEach(function(t) { %>
-      <% console.log(t.done) %>
       <tr>
         <td id="checkbox">
           <form action="/tasks/isdone/<%= t._id %>?_method=PUT" method="POST">

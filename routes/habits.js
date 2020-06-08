@@ -7,7 +7,6 @@ router.post('/', isLoggedIn, habitsCtrl.create);
 router.put('/isdone/:id', isLoggedIn, habitsCtrl.updateDone);
 router.delete('/:id', isLoggedIn, habitsCtrl.delete);
 router.get('/:id', isLoggedIn, habitsCtrl.show);
-//router.get('/:id', isLoggedIn, habitsCtrl.show);
 
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) return next();

@@ -10,12 +10,11 @@ module.exports = {
   update, 
   delete: deleteTask, 
   updateDone,
-  newForGoal, 
-  showForm
+  newForGoal
 }
 
 function index(req, res) {
-  Task.find({}, function(err, tasks) {
+  Task.find({user: req.user}, function(err, tasks) {
     res.render('tasks', { 
       title: 'Tasks', 
       user: req.user, 
@@ -26,7 +25,7 @@ function index(req, res) {
 }
 
 function newTask(req, res) {
-  Goal.find({}, function (err, goals) {
+  Goal.find({user: req.user}, function (err, goals) {
     res.render('tasks/new', {
       goals,
       title: 'Tasks', 
@@ -45,8 +44,6 @@ Goal.findById(req.body.goalId, function (err, goal) {
       console.log(err) 
       return res.redirect('/tasks/new');
     }
-      console.log(task);
-      console.log('goal name: ', task.goal.name);
       return res.redirect('/tasks'); 
    });
   });
@@ -55,7 +52,7 @@ Goal.findById(req.body.goalId, function (err, goal) {
 function edit(req, res) {
   Task.findById(req.params.id, function(err, task) {
     const dueValue = task.dueDate.toISOString().slice(0, 10);
-    Goal.find({}, function(err, goals) {
+    Goal.find({user: req.user}, function(err, goals) {
       res.render('tasks/edit', {
           task,
           title: 'Tasks', 
@@ -89,7 +86,6 @@ function updateDone(req, res) {
         console.log(err); 
         res.redirect('/tasks');
       } else { 
-        console.log(task);
         res.redirect('back');
       }
     })
@@ -104,16 +100,10 @@ function deleteTask (req, res) {
 
 function newForGoal(req, res) {
   Goal.findById(req.params.id, function (err, goal) {
-
     res.render('tasks/new', {
       goals,
       title: 'Tasks', 
       user: req.user,
     });
   })
-}
-
-function showForm(req, res) {
-  document.getElementById('welcomeDiv').style.display = "block";
-  res.render('goals/show')
 }
